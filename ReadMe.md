@@ -1,17 +1,17 @@
-# Author:       Jessica Nephin
-# Affiliation:  IOS, Fisheries and Oceans Canada (DFO)
-# Group:        Marine Spatial Ecology & Analysis, Ecosystems Science Division
-# Address:      9860 West Saanich Road, Sidney, British Columbia, V8L 4B2, Canada
-# Contact:      e-mail: jessica.nephin@dfo-mpo.gc.ca | tel: 250.363.6564
+ Author:       Jessica Nephin
+ Affiliation:  IOS, Fisheries and Oceans Canada (DFO)
+ Group:        Marine Spatial Ecology & Analysis, Ecosystems Science Division
+ Address:      9860 West Saanich Road, Sidney, British Columbia, V8L 4B2, Canada
+ Contact:      e-mail: jessica.nephin@dfo-mpo.gc.ca | tel: 250.363.6564
 
 
 Combining environmental data layers
 ===========================
 
-* Copy polygon environmental geodatabases (e.g. SalTemp.gdb and NCC_BoPs_v1.1.gdb) 
+1) Copy polygon environmental geodatabases (e.g. SalTemp.gdb and NCC_BoPs_v1.1.gdb) 
     from their home directories into 'InputData/Polygons'
 	
-* Copy raster environmental layers (e.g. Chla_mean and NCC_Bathy_Derived_Layers.gdb) 
+2) Copy raster environmental layers (e.g. Chla_mean and NCC_Bathy_Derived_Layers.gdb) 
     from their home directories into 'InputData/Rasters'
 
 	
