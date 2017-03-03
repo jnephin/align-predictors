@@ -85,7 +85,7 @@ rastersnum <- c("Chla_mean","distLand","FBPI","fetchMax","fetchMean","fetchNW","
                 "spr_MnSp","spr_Sal","spr_Stres","spr_Temp","ArcRug","bathy","BBPI")
 
 ## List of INT1U integer rasters
-rasters1int <- c("Bloom_Freq","BType","DepthCode")
+rasters1int <- c("Bloom_Freq","DepthCode")
 
 
 
