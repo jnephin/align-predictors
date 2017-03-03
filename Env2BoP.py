@@ -128,7 +128,7 @@ for g in gdb:
 	elif evname == "Fetch":
 		fields = ["fetchNW","fetchSE","fetchMax","fetchMean","distLand"]
 	elif evname == "Currents":
-		fields = ["spr_MnSp","rng_MnSp","spr_MaxSp","rng_MaxSp","spr_Stress","rng_Stress"]
+		fields = ["spr_MnSp","rng_MnSp","spr_MaxSp","rng_MaxSp","spr_Stres","rng_Stress"]
 
 	# 5)
 	# Loop through fields to add to BoP
@@ -177,7 +177,7 @@ for g in gdb:
 #---------------------------------------------------------------------------------------#
 
 # B) Loop through raster origin envrionmental data (raster origin)
-gdb = ["Chla.gdb","Bathy.gdb"]
+gdb = ["Chla.gdb",] #"Bathy.gdb"]
 for g in gdb:
 
 	# Get Environmental variable name

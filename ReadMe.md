@@ -8,16 +8,18 @@
 Combining environmental data layers
 ===========================
 
-1) Copy polygon environmental geodatabases (e.g. SalTemp.gdb and NCC_BoPs_v1.1.gdb) 
+1) Copy polygon environmental geodatabases (e.g. SalTemp.gdb and NCC_BoPs_v1.1.gdb)
     from their home directories into 'InputData/Polygons'
-	
-2) Copy raster environmental layers (e.g. Chla_mean and NCC_Bathy_Derived_Layers.gdb) 
+
+2) Copy raster environmental layers (e.g. Chla_mean and NCC_Bathy_Derived_Layers.gdb)
     from their home directories into 'InputData/Rasters'
 
-	
+3) Combine Btype1 and Btype2 attributes in NCC_BoPs_v1.1.gdb
+
+
 Polygons
 --------
-	
+
 1) Export layers from NCC_Bathy_Derived_Layers.gdb as GeoTiffs with 'GDB_RasterExport.py'
 
 2) Convert raster layers into polygons with 'Raster2poly.py'
@@ -33,10 +35,10 @@ Rasters
 
 2) Resample all rasters that didn't originate from BoP polygons to the resolution of BoPs.
     Align rasters to the spatial extent of BoP rasters while preforming the resample
-	with 'ResampleGdal.sh'
-	
+	  with 'ResampleGdal.sh'
+
 3) Mask all rasters using a BoP raster layer that is clipped with a coastline polygon to limit
-    the data to the nearshore BoP area. Export rasters as GeoTiffs to 'AlignedData/Rasters' 
-	with 'MaskConvert.R'.
-	
+    the data to the nearshore BoP area. Export rasters as GeoTiffs to 'AlignedData/Rasters'
+	  with 'MaskConvert.R'.
+
 4) Calculate stats and build pyramids with 'Pyramids.sh'
