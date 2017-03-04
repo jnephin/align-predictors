@@ -16,16 +16,16 @@ os.chdir('..')
 arcpy.env.overwriteOutput = True
 
 # Set environment settings
-arcpy.env.workspace = os.getcwd()+"/InputData"
+arcpy.env.workspace = os.getcwd()
 
 
 # ------------------------------------#
 # Loop through environmental geodatabases
-geo = ["SalTemp.gdb","Currents.gdb","NCC_BoPs_v1.1.gdb","Fetch.gdb"]
+geo = ["NCC_BoPs_v1.1.gdb","Fetch.gdb","SalTemp.gdb","Currents.gdb"]
 for g in geo:
 
 	# Get layer basename
-	desc = arcpy.Describe("Polygons/"+g)
+	desc = arcpy.Describe("InputData/Polygons/"+g)
 	evname = desc.baseName
 
 	# Set fields and layer name
@@ -39,7 +39,7 @@ for g in geo:
 		inLayer = evname+"_Interp"
 		fields = ["spr_MnSp","rng_MnSp","spr_MaxSp","rng_MaxSp","spr_Stres","rng_Stress"]
 	elif evname == "NCC_BoPs_v1.1":
-		inLayer = "BoP18_Merged"
+		inLayer = "BoP_clipped"
 		fields = ["BType","DepthCode"]
 
 	# set appropriate cell size to match lowest resolution of the native point data
@@ -51,16 +51,16 @@ for g in geo:
 		cellSize =  20.0
 
 	# Input feature
-	inFeature = "Polygons/"+g+"/"+inLayer
+	inFeature = "InputData/Polygons/"+g+"/"+inLayer
 
 	# loop through fields
 	for f in fields:
 
 		# output
 		if evname == "SalTemp" or evname == "Currents" or evname == "Fetch":
-			outRaster = "Rasters/Original/"+f+".tif"
+			outRaster = "InputData/Rasters/"+f+".tif"
 		elif evname == "NCC_BoPs_v1.1":
-			outRaster = "Rasters/BoP_Aligned/"+f+".tif"
+			outRaster = "AlignedData/Rasters/"+f+".tif"
 
 		# Set variables
 		assignmentType = "MAXIMUM_COMBINED_AREA"

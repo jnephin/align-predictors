@@ -16,6 +16,8 @@ Combining environmental data layers
 
 3) Combine Btype1 and Btype2 attributes in NCC_BoPs_v1.1.gdb
 
+4) Clipp BoP to NCC_Nearshore_Area_BoP
+
 
 Polygons
 --------
