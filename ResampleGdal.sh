@@ -22,7 +22,7 @@ for i in $(ls Original/*.tif); do
 
     # input, output
     in=$i
-    out="BoP_Aligned/${base}.tif"
+    out="Resampled/${base}.tif"
 
 	# spatial extents of BoP raster - aligns all raster (origin and res) for SDM
     xmin=664130.7863

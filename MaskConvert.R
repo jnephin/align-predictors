@@ -24,7 +24,7 @@ maskconv <- function(rasterfile, datatype){
   require(rgdal)
 
   # infile
-  inf = paste0("InputData/Rasters/", rasterfile)
+  inf = paste0("InputData/Rasters/Resampled/", rasterfile)
   # outfile
   outf = paste0("AlignedData/Rasters/", rasterfile)
 
@@ -65,7 +65,7 @@ maskconv <- function(rasterfile, datatype){
 proj <- "+proj=aea +lat_1=50 +lat_2=58.5 +lat_0=45 +lon_0=-126 +x_0=1000000 +y_0=0 +datum=NAD83 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 
 ## List  rasters
-rasters <- list.files(path="InputData/Rasters",pattern=".tif$")
+rasters <- list.files(path="InputData/Rasters/Resampled",pattern=".tif$")
 
 
 
@@ -85,7 +85,3 @@ parSapply(cl, rasters, FUN=maskconv, datatype="FLT4S")
 ## stop cluster
 stopCluster(cl)
 
-
-# clean up
-tmps <- list.files(path="InputData/Rasters",pattern="_tmp.tif$")
-unlist(tmps)
