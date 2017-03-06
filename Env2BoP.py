@@ -39,7 +39,7 @@ inpath = "InputData/Polygons"
 outpath = "AlignedData/Polygons"
 
 # BoP geodatabases and paths
-bop = os.path.join(os.getcwd(),inpath,"NCC_BoPs_v1.1.gdb/BoP18_merged")
+bop = os.path.join(os.getcwd(),inpath,"NCC_BoPs_v1.1.gdb/BoP")
 gdbpath = os.path.join(os.getcwd(),outpath)
 BoPenv = os.path.join(os.getcwd(),outpath,"BoP_Env.gdb/BoP")
 

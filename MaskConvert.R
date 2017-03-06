@@ -84,4 +84,3 @@ parSapply(cl, rasters, FUN=maskconv, datatype="FLT4S")
 
 ## stop cluster
 stopCluster(cl)
-

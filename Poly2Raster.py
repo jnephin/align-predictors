@@ -21,7 +21,7 @@ arcpy.env.workspace = os.getcwd()
 
 # ------------------------------------#
 # Loop through environmental geodatabases
-geo = ["NCC_BoPs_v1.1.gdb","Fetch.gdb","SalTemp.gdb","Currents.gdb"]
+geo = ["Fetch.gdb","SalTemp.gdb","Currents.gdb","NCC_BoPs_v1.1.gdb",
 for g in geo:
 
 	# Get layer basename
@@ -39,8 +39,8 @@ for g in geo:
 		inLayer = evname+"_Interp"
 		fields = ["spr_MnSp","rng_MnSp","spr_MaxSp","rng_MaxSp","spr_Stres","rng_Stress"]
 	elif evname == "NCC_BoPs_v1.1":
-		inLayer = "BoP_clipped"
-		fields = ["BType","DepthCode"]
+		inLayer = "BoP"
+		fields = ["BType","DepthBin"]
 
 	# set appropriate cell size to match lowest resolution of the native point data
 	if evname == "SalTemp" or evname == "Currents":
@@ -58,7 +58,7 @@ for g in geo:
 
 		# output
 		if evname == "SalTemp" or evname == "Currents" or evname == "Fetch":
-			outRaster = "InputData/Rasters/"+f+".tif"
+			outRaster = "InputData/Rasters/Original/"+f+".tif"
 		elif evname == "NCC_BoPs_v1.1":
 			outRaster = "AlignedData/Rasters/"+f+".tif"
 
