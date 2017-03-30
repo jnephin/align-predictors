@@ -14,7 +14,7 @@ Combining environmental data layers
 2) Copy raster environmental layers (e.g. Chla_mean and NCC_Bathy_Derived_Layers.gdb)
     from their home directories into 'InputData/Rasters'
 
-3) Clipp BoP to NCC_Nearshore_Area_BoP and convert factors with BoPclip.py
+3) Clip BoP to NCC_Nearshore_Area_BoP and convert factors with BoPclip.py
 
 
 Polygons

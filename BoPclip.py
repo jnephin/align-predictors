@@ -40,12 +40,12 @@ arcpy.Clip_analysis(inFeature, boundary, outFeature)
 #-----------------------------------------------------------#
 # Combine Btype1 and Btype2
 
-# Add field
-fexists = arcpy.ListFields (outFeature, "BTypeComb")
-if len(fexists) != 1:
-	arcpy.AddField_management (outFeature, "BTypeComb", "TEXT")
-#Calculate field
-arcpy.CalculateField_management (outFeature, "BTypeComb", "!BType1! + !BType2!", "PYTHON_9.3")
+# # Add field
+# fexists = arcpy.ListFields (outFeature, "BTypeComb")
+# if len(fexists) != 1:
+# 	arcpy.AddField_management (outFeature, "BTypeComb", "TEXT")
+# #Calculate field
+# arcpy.CalculateField_management (outFeature, "BTypeComb", "!BType1! + !BType2!", "PYTHON_9.3")
 
 
 #-----------------------------------------------------------#
@@ -53,16 +53,19 @@ arcpy.CalculateField_management (outFeature, "BTypeComb", "!BType1! + !BType2!",
 
 # BType
 
+# Rename BType1 to BType
+arcpy.AlterField_management(outFeature, 'BType1', 'BType', 'BType')
+
 # Add field
-fexists = arcpy.ListFields (outFeature, "BType")
-if len(fexists) != 1:
-	arcpy.AddField_management (outFeature, "BType", "SHORT")
-#Calculate field
-arcpy.CalculateField_management (outFeature, "BType",
-								'''{"1": "1", "1a": "2", "1b": "3",
-								"2": "4", "2a": "5", "2b": "6",
-								"3": "7", "3a": "8", "3b": "9"}.get(!BTypeComb!, "0")''',
-								"PYTHON_9.3")
+# fexists = arcpy.ListFields (outFeature, "BType")
+# if len(fexists) != 1:
+# 	arcpy.AddField_management (outFeature, "BType", "SHORT")
+# #Calculate field
+# arcpy.CalculateField_management (outFeature, "BType",
+# 								'''{"1": "1", "1a": "2", "1b": "3",
+# 								"2": "4", "2a": "5", "2b": "6",
+# 								"3": "7", "3a": "8", "3b": "9"}.get(!BTypeComb!, "0")''',
+# 								"PYTHON_9.3")
 
 # DepthCode
 

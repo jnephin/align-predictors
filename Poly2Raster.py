@@ -21,7 +21,7 @@ arcpy.env.workspace = os.getcwd()
 
 # ------------------------------------#
 # Loop through environmental geodatabases
-geo = ["Fetch.gdb","SalTemp.gdb","Currents.gdb","NCC_BoPs_v1.1.gdb",
+geo = ["NCC_BoPs_v1.1.gdb","Fetch.gdb","SalTemp.gdb","Currents.gdb"]
 for g in geo:
 
 	# Get layer basename
