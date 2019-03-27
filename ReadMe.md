@@ -35,10 +35,10 @@ Rasters
 
 2) Resample all rasters that didn't originate from BoP polygons to the resolution of BoPs.
     Align rasters to the spatial extent of BoP rasters while preforming the resample
-	  with 'ResampleGdal.sh'
+    with 'ResampleGdal.sh'
 
 3) Mask all rasters using a BoP raster layer that is clipped with a coastline polygon to limit
-    the data to the nearshore BoP area. Export rasters as GeoTiffs to 'AlignedData/Rasters'
-	  with 'MaskConvert.R'.
+    the data to the nearshore BoP area. Export rasters as GeoTiffs to 'AlignedData/Rasters
+    with 'MaskConvert.R' or 'Mask.py' (faster).
 
 4) Calculate stats and build pyramids with 'Pyramids.sh'

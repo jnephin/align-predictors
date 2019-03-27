@@ -17,7 +17,7 @@ os.chdir('..')
 arcpy.env.overwriteOutput = True
 
 # Set environment settings
-arcpy.env.workspace = os.getcwd()+"/InputData/Rasters/Original"
+arcpy.env.workspace = os.getcwd()+"/Data/NCC_nearshore/InputData/Raster/Original"
 
 # geodatabase
 gdb = "NCC_Bathy_Derived_Layers.gdb"

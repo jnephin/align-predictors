@@ -10,9 +10,7 @@
 # required packages
 require(parallel)
 
-# working directory
-setwd('..')
-
+# setwd('..')
 
 ####----------------------------------------------------------------------####
 ## Function
@@ -24,31 +22,36 @@ maskconv <- function(rasterfile, datatype){
   require(rgdal)
 
   # infile
-  inf = paste0("InputData/Rasters/Resampled/", rasterfile)
+  inf = paste0("Data/NCC_nearshore/InputData/Raster/Resampled/", rasterfile)
   # outfile
-  outf = paste0("AlignedData/Rasters/", rasterfile)
+  outf = paste0("Data/NCC_nearshore/AlignedData/Raster/", rasterfile)
 
   # run if file exists
   if(file.exists(inf)){
 
     # load input raster
     ras <- raster(inf)
-    # load masked BoP rasted
-    bopmask <- raster("AlignedData/Rasters/BType.tif")
+    # load raster mask
+    bmask <- raster("Data/NCC_nearshore/AlignedData/Raster/BType.tif")
+    # load polygon mask
+    # bmask <- readOGR( dsn = "Data/NCC_nearshore/Boundary", layer = "NCC_Nearshore_Area_BoP_buffer20m")
+    # bmask <- readOGR( dsn = "Data/NSB_shelf/Boundary", layer = "NSB_buffer100m")
 
     # set ful proj string
     proj4string(ras) <- proj
-    proj4string(bopmask) <- proj
+    proj4string(bmask) <- proj
 
     # BoP extents
-    ext <- extent(bopmask)
+    ext <- extent(bmask)
 
     # Crop - crop raster to spatial extent of bop raster
-    tmp <- paste0("InputData/Rasters/",rasterfile,"_tmp.tif")
-    cras <- raster::crop(ras, ext, filename=tmp, overwrite=TRUE, format = "GTiff", datatype = datatype)
+    tmp <- paste0("Data/NCC_nearshore/InputData/Raster/",rasterfile,"_tmp.tif")
+    cras <- raster::crop(ras, ext, filename=tmp, overwrite=TRUE,
+        format = "GTiff", datatype = datatype)
 
     # Mask - converts cells in raster to NA where cells are == NA in bop
-    mras <- raster::mask(cras, bopmask, filename=outf, overwrite=TRUE, format = "GTiff", datatype = datatype)
+    mras <- raster::mask(cras, bmask, filename=outf, overwrite=TRUE,
+        format = "GTiff", datatype = datatype)
 
     # clean up tmp files
     unlink(tmp)
@@ -64,8 +67,11 @@ maskconv <- function(rasterfile, datatype){
 #full bc albers proj
 proj <- "+proj=aea +lat_1=50 +lat_2=58.5 +lat_0=45 +lon_0=-126 +x_0=1000000 +y_0=0 +datum=NAD83 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 
+
 ## List  rasters
-rasters <- list.files(path="InputData/Rasters/Resampled",pattern=".tif$")
+rasters <- list.files(path="Data/NCC_nearshore/InputData/Raster/Resampled",
+                          pattern=".tif$")
+rasters <- c("Substrate_20m.tif")
 
 
 
@@ -80,7 +86,9 @@ cl <- makeCluster(num_cores)
 clusterExport(cl, varlist="proj")
 
 # apply function over clusters for thiessen interp layers
-parSapply(cl, rasters, FUN=maskconv, datatype="FLT4S")
+#parSapply(cl, rasters, FUN=maskconv, datatype="FLT4S")
+parSapply(cl, rasters, FUN=maskconv, datatype="INT1U")
+
 
 ## stop cluster
 stopCluster(cl)
